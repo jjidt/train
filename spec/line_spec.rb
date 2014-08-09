@@ -33,4 +33,26 @@ describe 'Lines' do
       expect(Super::Lines.read({"'*'" => '*'}).length).to eq 2
     end
   end
+
+  describe 'update' do
+    it 'updates column info for a specified row' do
+      test_line = Super::Lines.new({'name' => 'green'})
+      test_line2 = Super::Lines.new({'name' => 'blue'})
+      create_id = test_line.create
+      test_line2.create
+      Super::Lines.update({'name' => 'red'}, {'id' => create_id})
+      expect(Super::Lines.read({'id' => create_id}).first.name).to eq 'red'
+    end
+  end
+
+  describe 'delete' do
+    it 'removes an item from the database' do
+      test_line = Super::Lines.new({'name' => 'green'})
+      test_line2 = Super::Lines.new({'name' => 'red'})
+      test_line.create
+      test_line2.create
+      Super::Lines.delete({'name' => 'red'})
+      expect(Super::Lines.read("'*'" => '*').length).to eq 1
+    end
+  end
 end

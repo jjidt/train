@@ -40,12 +40,17 @@ module Super
 
     def self.update(attributes, selector)
       columns = attributes.keys.join(", ")
-      selectors = attributes.values.map {|selector| "'" + selector.to_s + "'"}.join(", ")
+      new_values = attributes.values.map {|selector| "'" + selector.to_s + "'"}.join(", ")
       DB.exec("UPDATE #{@@table}
-      SET (#{columns}) = (#{selectors})
+      SET (#{columns}) = (#{new_values})
       WHERE #{selector.keys[0]}= #{selector.values[0]};")
     end
 
+    def self.delete(attributes)
+      columns = attributes.keys.join(", ")
+      selectors = attributes.values.map {|selector| "'" + selector.to_s + "'"}.join(", ")
+      DB.exec("DELETE FROM #{@@table} WHERE #{columns}= #{selectors};")
+    end
 
   end
 
