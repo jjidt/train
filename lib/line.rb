@@ -1,4 +1,4 @@
-class Line
+class Line < Super
 
   attr_accessor :name
 
