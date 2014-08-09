@@ -1,7 +1,7 @@
-class Station < Super
-
-  def initialize attributes
-    @name = attributes['name']
-  end
-
-end
+# class Station < Super
+#
+#   def initialize attributes
+#     @name = attributes['name']
+#   end
+#
+# end
