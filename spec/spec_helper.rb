@@ -2,7 +2,6 @@ require 'rspec'
 require 'pg'
 require 'pry'
 require 'vhs'
-require 'rubocop'
 
 DB = PG.connect({:dbname => 'train_test'})
 

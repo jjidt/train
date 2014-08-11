@@ -48,9 +48,9 @@ describe 'Station' do
       test_line_id = test_line.create
       test_line2_id = test_line2.create
       test_line3_id = test_line3.create
-      test_stop = Vhs::Stop.new('station_id' => '1', 'line_id' => '1')
-      test_stop2 = Vhs::Stop.new('station_id' => '1', 'line_id' => '3')
-      test_stop3 = Vhs::Stop.new('station_id' => '2', 'line_id' => '1')
+      test_stop = Vhs::Stop.new('station_id' => test_station_id, 'line_id' => test_line_id)
+      test_stop2 = Vhs::Stop.new('station_id' => test_station_id, 'line_id' => test_line3_id)
+      test_stop3 = Vhs::Stop.new('station_id' => test_station2_id, 'line_id' => test_line_id)
       test_stop.create
       test_stop2.create
       test_stop3.create
