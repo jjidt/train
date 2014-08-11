@@ -1,7 +1,8 @@
 require 'rspec'
 require 'pg'
 require 'pry'
-require 'module_sketch'
+require 'vhs'
+require 'rubocop'
 
 DB = PG.connect({:dbname => 'train_test'})
 
@@ -12,7 +13,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DB.exec("DELETE FROM lines *;")
     DB.exec("DELETE FROM stations *;")
+    DB.exec("DELETE FROM stops *;")
   end
 end
 
-Super.create_classes
+Vhs.create_classes
